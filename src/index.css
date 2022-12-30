@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* VARIABLES */
@@ -173,8 +174,27 @@ a:focus-visible {
   gap: 1em;
 }
 
+.dash-footer > p > span {
+  color: white;
+}
+
 .dash-footer__button {
   font-size: 1rem;
   width: auto;
   height: auto;
+  color: white;
+}
+
+/* Notes related */
+.table {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  color: var(--COLOR);
+  /* padding: 20px; */
+  border-radius: 20px;
+  background-color: var(--TABLE-COLOR);
+  /* background-blend-mode: lighten; */
+  /* opacity: 0.5; */
+  width: 100%;
+  gap: 10em;
 }

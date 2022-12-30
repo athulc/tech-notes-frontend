@@ -5,8 +5,12 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 import usePersist from "../../hooks/usePersist";
+import { PulseLoader } from "react-spinners";
+import useTitle from "../../hooks/useTitle";
 
 const Login = () => {
+  useTitle("techNotes - Login");
+
   const userRef = useRef();
   const errRef = useRef();
 
@@ -44,7 +48,7 @@ const Login = () => {
       } else if (error.status === 401) {
         setErrMsg("Unauthorized");
       } else {
-        setErrMsg(error.data?.message);
+        setErrMsg(error?.data?.message);
       }
 
       errRef.current.focus();
@@ -57,7 +61,7 @@ const Login = () => {
 
   const errClass = errMsg ? "errmsg" : "offscreen";
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <PulseLoader color={"#FFF"} />;
 
   const content = (
     <section className="public">

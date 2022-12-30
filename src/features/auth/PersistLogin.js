@@ -4,6 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import usePersist from "../../hooks/usePersist";
 import { useRefreshMutation } from "./authApiSlice";
 import { selectCurrentToken } from "./authSlice";
+import { PulseLoader } from "react-spinners";
 
 const PersistLogin = () => {
   const [persist] = usePersist();
@@ -49,13 +50,13 @@ const PersistLogin = () => {
     content = <Outlet />;
   } else if (isLoading) {
     console.log("loading");
-    content = <p>Loading...</p>;
+    content = <PulseLoader color={"#FFF"} />;
   } else if (isError) {
     //persist: yes, token: no
     console.log("error");
     content = (
       <p className="errmsg">
-        {error.data?.message}
+        {`${error?.data?.message} - `}
         <Link to="/login">Please login again</Link>
       </p>
     );
