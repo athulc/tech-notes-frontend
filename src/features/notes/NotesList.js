@@ -35,7 +35,7 @@ const NotesList = () => {
       filteredIds = ids.filter((noteId) => entities[noteId].username === username);
     }
 
-    const tableContent = ids?.length && ids.map((noteId) => <Note key={noteId} noteId={noteId} />);
+    const tableContent = ids?.length && filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />);
 
     content = (
       <table className="table table--notes">
