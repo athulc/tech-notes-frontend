@@ -27,13 +27,15 @@ const NotesList = () => {
 
   if (isSuccess) {
     const { ids, entities } = notes;
-
+    console.log(entities);
     let filteredIds;
     if (isManager || isAdmin) {
       filteredIds = [...ids];
     } else {
-      filteredIds = ids.filter((noteId) => entities[noteId].username === username);
+      filteredIds = [...ids]; //ids.filter((noteId) => entities[noteId].username === username);
     }
+
+    console.log(filteredIds);
 
     const tableContent = ids?.length && filteredIds.map((noteId) => <Note key={noteId} noteId={noteId} />);
 
